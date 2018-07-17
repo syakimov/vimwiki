@@ -1,0 +1,12 @@
+= structure applications - minimalistic js MVC framework =
+
+provide models with
+  key-value binding
+  custom events
+provide collections with
+  API of enumerable functions,
+provide views with
+  declarative event handling
+
+connects
+  existing API over a RESTful JSON interface.

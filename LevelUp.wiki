@@ -1,0 +1,175 @@
+= LevelUp =
+
+* What a person can do?
+* What a mentor can do?
+
+== Qualities ==
+    - technical
+    - community
+      * help others
+      * proactive
+      * informal leaders
+    - leadership(ownership)/connectiveness
+      * split
+      * ask question
+      * focus (abstraction)
+      * business problem
+
+== What a person can do? ==
+
+Structure the effort -> sport example, how do you become good sportist
+  - thinking
+  - practise
+  - be around better people
+  - sharpen env
+
+* Plan
+* Retrospection (Рефлектиране)
+* Lazy delving into problems
+  - ratio btw problem solving/research
+
+
+== Practical Example ==
+  * read code from github projects (delve)
+  * technical problem solutions (Postgre architecture) (delve)
+  * read theory/books
+  * follow podcasts
+  * Read posts & books from
+    - Kent Beck
+    - Martin Fowler
+    - Robert C. Martin (uncle Bob)
+  * frameworks
+    - problems
+    - architecture
+  * algorithms (do not delve)
+  * know your stack
+    - operation system (do not delve)
+      * memory management
+      * processes
+      * kernel
+    - know at least one level below (delve)
+  * bare minimum of web development
+    - ROR
+    - SQL how it works
+    - http
+    - DOM
+    - know how to deploy the ROR app (mandatory but not essential)
+      * know how to scale
+      * know how to parelaze
+      * web server to serve the static files
+      * cache
+      * asset precompilation
+      * os
+    - after work must spent time to
+      * after arch books must delve into
+        - infrastructure
+        - sth which is close at work
+        - use it at work
+
+
+*functional language*
+  * high lvl functions
+  * stateless
+  * declarative programming
+
+*language artefact*
+  solution to a particular problem
+  be sceptical about tech hype and practices (node asynch)
+
+*strive to simplicity*
+  can I make this more simple
+  iterate
+
+*generalization*
+  can lead to overengineering
+  duplication is not that bad
+  general abstraction is not always good
+  generalize only when at least two/three duplications
+
+*do not be scared to try to solve it ugly and bruteforce*
+  backtrack and try diff method
+  iterate
+  practise
+
+*become good by refining and rewriting*
+  do not overthink before solving
+  always iterate after solving problem
+
+*try stuff you are not least comfortable with*
+
+_евристика_ -> система за обучение, целяща да емпирични изводи
+_DHH_       -> David Heinemeier Hansson author of ROR
+_UML_       -> Unified Modeling Language https://www.google.bg/imgres?imgurl=https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/UML_diagrams_overview.svg/600px-UML_diagrams_overview.svg.png&imgrefurl=https://en.wikipedia.org/wiki/Unified_Modeling_Language&h=334&w=600&tbnid=S2n-0IyvEpMqhM:&q=uml+diagram&tbnh=111&tbnw=199&usg=__gxJhk9bnHnsFppPvphad83HVNNA%3D&vet=10ahUKEwiYivqwqqbcAhXHiCwKHQGEDM8Q_B0IkwIwFg..i&docid=dXP6LsA9xM-KrM&itg=1&client=ubuntu&sa=X&ved=0ahUKEwiYivqwqqbcAhXHiCwKHQGEDM8Q_B0IkwIwFg
+
+== What a mentor can do? ==
+
+go through diff levels of abstraction (from business to technical representation)
+  slow down, do not jump to solution
+  focus on one level of abstraction
+  handle side problems
+    write down leave them aside
+    go back to them when finished with main problem
+  the problem is not always in some context
+    get some history
+      git blame
+      see commit message
+      communicate
+
+make sure you work on the problem you need to
+
+there is technical time to learn something, must always iterate
+
+commit messages attention
+
+approaches to code and problems
+  be detailed oriented (be analytic to code and details)
+  first master syntax then go to architecture
+  first rewrite code
+    fix formatting
+    refactor
+  then analyze
+
+
+soft/abstract advices
+  do not be scared to ask
+  empathy to the colleague problems
+  go out of the comfort zone
+
+learn by making mistakes
+  ratio btw making _mistakes/solving business problems_
+  where/when can I make mistake
+
+prototyping
+  initial thinking in order not to make mistakes
+  code and learn from mistakes
+  do not be afraid to make mistakes
+  be suspicious
+  prototype -> delete -> use the knowledge
+  do not rush
+  set timeframe for problem exploration
+
+I will spend the day coding
+  though it might not solve the prob in order to learn something
+
+*delve into fundamentals*
+  find what is the jab equivalent
+  learn how to write tests
+  naming things
+  code formatting
+
+
+== Summary ==
+Gary Burnheart burn all software
+three flows one need to work on
+  tech
+  leadership
+  community/connectiveness
+lead/mentor
+*reflect more*
+do not rush
+*fundamentals*
+*problems*
+give yourself idle time in order to rethink and conclusions
+go to out of the comfort zone
+  you need to be good at think you do not like
+continuation passing style nodejs

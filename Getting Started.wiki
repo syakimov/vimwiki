@@ -1,0 +1,10 @@
+Advice
+  stop tying your data to the DOM
+
+Models
+  represent data like ActiveRecord
+
+When UI action change attribute of an model
+  - the model triggers "change" event
+  - to which the View is subscribed
+  - the View renders again with new value

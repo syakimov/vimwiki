@@ -1,0 +1,10 @@
+List of friends
+
+- [ ] 1 Kamen
+- [ ] 2 Ivo
+- [ ] 3 Todor
+- [ ] 3 Zdravko Jul 15
+- [ ] 6 Viki Jul 10
+- [ ] 9 Lubaka
+- [ ] 9 Vikeca
+- [ ] 9 Simicha Jul 15

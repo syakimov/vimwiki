@@ -1,0 +1,5 @@
+= RB =
+
+- [ ] 0 Read Rails guides
+- [ ] 1 Get style guide from Kamen
+- [ ] 7 Read Eloquent Ruby

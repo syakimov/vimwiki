@@ -1,0 +1,23 @@
+= My knowledge base =
+    * [[Tasks]]
+    * [[RB]]
+    * [[Scratchpad]]
+    * [[Friends]]
+    * [[Backbone]]
+
+plugin: https://github.com/vimwiki/vimwiki
+
+*bold*
+_italic_
+
+Lists:
+* bullet list item 1
+    - bullet list item 2
+    - bullet list item 3
+        * bullet list item 4
+        * bullet list item 5
+
+1. numbered list item 1
+2. numbered list item 2
+    a) numbered list item 3
+    b) numbered list item 4
