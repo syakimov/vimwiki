@@ -1,0 +1,1 @@
+* Patterns of Enterprise Application Architecture -> http://training.hasintech.com/download/attachments/1802696/Patterns%20of%20Enterprise%20Application%20Architecture%20-%20Martin%20Fowler.pdf?version=1&modificationDate=1464702352696&api=v2

@@ -1,0 +1,72 @@
+= DOM =
+
+
+== What is the DOM? ==
+
+Document Object Model (DOM)
+  HTML and XML interface
+  maps web page to nodes and objects
+  man doc's structure, style and content
+
+API (HTML or XML) = DOM + JS (scripting language)
+
+== How Do I Access the DOM? ==
+
+var heading = document.createElement("h1");
+heading.appendChild(document.createTextNode("heading text"));
+document.body.appendChild(heading);
+
+== Important Data Types ==
+
+
+document
+  this object is the root document object itself
+element
+  node returned by a member of the DOM API
+  implement the *DOM Element interface*
+  *document.createElement()* method returns an object reference to a node
+nodeList
+  array of elements
+  document.getElementsByTagName()
+  items are accessed by index
+attribute
+  object reference exposing interface for attributes
+  node in the DOM
+  *createAttribute()* returns an attribute
+namedNodeMap
+  map of nodes
+
+== DOM interfaces ==
+
+
+form el implements
+  HTMLFormElement interface (name)
+  HTMLElement interface     (className)
+
+Interfaces and Objects
+  each object implements many interfaces
+
+table.attributes -> Node/Element interface
+table.summary    -> HTMLTableElement interface: summary attribute
+
+== Core Interfaces in the DOM ==
+
+
+* document is the root of the document itself
+* window represents browser
+* Element inherits from the generic Node interface
+
+* main functions
+* document.getElementById(id)
+* document.getElementsByTagName(name)
+* document.createElement(name)
+* parentNode.appendChild(node)
+* element.innerHTML
+* element.style.left
+* element.setAttribute()
+* element.getAttribute()
+* element.addEventListener()
+* window.content
+* window.onload
+* window.dump()
+* window.scrollTo()

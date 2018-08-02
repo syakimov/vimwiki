@@ -3,7 +3,8 @@
     * [[RB]]
     * [[Scratchpad]]
     * [[Friends]]
-    * [[Backbone]]
+    * [[LevelUp]]
+    * [[Books]]
 
 plugin: https://github.com/vimwiki/vimwiki
 
