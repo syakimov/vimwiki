@@ -1,0 +1,439 @@
+== Categorizing CSS Rules ==
+
+achive organization through categorization
+
+patterns and practices
+  css file structure
+  chosing a selector
+
+
+avoid the complexity from mixing styles
+guidelines for each cat
+ask yourself questions during development
+
+= CATS =
+- Base
+- Module (the biggest share)
+- Layout
+- State
+- Theme (good to know)
+
+Base rules are the defaults.
+  html, body, form { margin: 0; padding: 0; }
+  input[type=text] { border: 1px solid #999; } // attribute selectors
+  a { color: #039; }
+  a:hover { color: #03C; }                     // pseudo-class selectors
+
+Modules are reusable and modular
+  sidebar sections
+  product lists
+
+Layout rules divide the page into sections.
+Layouts hold one or more modules together.
+
+State rules customize modules and layouts look based on state
+  hidden or expanded
+  active or inactive
+  how page look on different screen
+  modules & layout look on home page vs inside page
+
+Naming Rules
+  show to which CAT the style belong
+  find the files where the style is located
+  use prefixes
+    Layout: `l-`, `layout-`, `grid-`
+    State: `is-` -> `is-hidden`, `is-collapsed`
+    Module: no prefixes
+
+  Ex.:
+    .callout { }              // 'callout' Module
+    .callout.is-collapsed { } // callout module with State
+    .l-inline { } // inline Layout
+
+`.exm` (*base name*)      -> short for examples
+`.exm-caption` (*rel el*) -> explicitly shows the relation
+
+module varaitons also use the *base module name* as prefix
+
+*Questions*
+  Sub-classing -> explained in module
+
+== Base Rules ==
+
+Base rule selectors
+  element
+  descendent
+  child
+  pseudo-classes
+
+Not use class and ID selector (too specific)
+
+Ex.:
+  body, form { margin: 0; padding: 0; }
+  a { color: #039; }
+  a:hover { color: #03F; }
+
+Set
+  heading sizes
+  body backgrounds
+  default link styles
+  default font styles
+__________________________________________________________________
+
+== Layout Rules ==
+
+major vs minor components layouts
+  minor -> Module comp
+    callout
+    login form
+    nav
+  major
+    header
+    footer
+    -> minor comp are inside them (Layout)
+    -> steled with ID selector
+
+Ex.:
+  #header, #article, #footer { width: 960px; margin: auto; }
+  #article { border: solid #CCC; border-width: 1px 0 0; }
+
+Layout style only has a single selector ID or class name
+Diff Layouts dep on user preference
+
+Ex.:
+  #article { float: left; }
+  #sidebar { float: right; }
+  .l-flipped #article { float: right; }
+  .l-flipped #sidebar { float: left; }
+
+Ex:
+  #article { width: 80%; float: left; }  // no namespacing namigng
+  #sidebar { width: 20%; float: right; } // only Layout can use ID selectors
+  .l-fixed #article { width: 600px; }    // `l-` prefix for distinction
+  .l-fixed #sidebar { width: 200px; }    // namespace ID selectors
+
+=== Patterns ===
+- Header
+- Main Nav
+- Content: featured, secondary, tertiary
+
+Ex.:
+  <div id="header"></div>
+  <div id="primarynav"></div>
+  <div id="maincontent"></div>
+  #header { … }
+  #primarynav { … }
+  #maincontent { … }
+
+=== Example of flexible and not flexible Layout styling ===
+<div>
+  <h2>Featured</h2>
+  <ul>
+      <li><a href="…">…</a></li>
+      <li><a href="…">…</a></li>
+      …
+  </ul>
+</div>
+
+Not flexible Ex.:
+  #featured ul { margin: 0; padding: 0; list-style-type: none; }
+  #featured li { float: left; height: 100px; margin-left: 10px; }
+
+Flexible Ex.:
+  .l-grid { margin: 0; padding: 0; list-style-type: none; }
+  .l-grid > li { display: inline-block; margin: 0 0 10px 10px; }
+
+*Google*
+  960.gs
+  ID-SEL with JS hooks
+__________________________________________________________________
+
+Module Rules
+
+sit inside
+  Layout
+  Module
+    components
+
+atomic
+  exist as a standalone component
+  Modules can move to diff parts of the layout
+
+Ex.:
+  nav bar
+  carousels (pic slider)
+  dialog
+  widgets
+
+Selectors
+  mainly `class`
+  alternatively `child` and `descendent`
+
+{
+  Problem: Style a span in a _folder_ module
+
+  BAD Ex.:
+    <div class="fld">
+        <span>Folder Name</span>
+    </div>
+    // assume there is one span in _fld_ -> .module span { ... }
+
+  GOOD Ex.: (works well for more than one span)
+    <div class="fld">
+        <span class="fld-name">Folder Name</span>
+        <span class="fld-items">(32 items)</span>
+    </div>
+
+  Conclusion: Only use selector with semantics (H1, class) not tag (span, div)
+}
+
+=== Subclassing Modules ===
+
+{
+Do not style based on location (it can change)
+Use Subclassing
+
+Ex.:
+  <div class="pod pod-constrained">...</div>
+  <div class="pod pod-callout">...</div> 
+  .pod { width: 100%; }
+  .pod input[type=text] { width: 50%; }
+  .pod-constrained input[type=text] { width: 100%; }
+  .pod-callout { width: 200px; }
+  .pod-callout input[type=text] { width: 180px; }
+}
+
+*Google*
+  callout
+__________________________________________________________________
+
+== State Rules ==
+
+State overrides
+  all other styles
+  base element and *not* layout or module
+
+States are applied to the same element as a
+  layout rule or
+  base module class
+
+States
+  built of single class selector
+  important! is allowed
+
+Ex.:
+  <div id="header" class="is-collapsed">
+      <form>
+          <div class="msg is-error">
+              There is an error!
+          </div>
+          <label for="searchbox" class="is-hidden">Search</label>
+          <input type="search" id="searchbox">
+      </form>
+  </div>
+
+`Sub-Module` is similar to `State`
+  *both* modify existing look of an element
+  they differ
+    `State` styles indicate JavaScript dependency
+    `Sub-Module` never change after render
+
+=== Combining State Rules with Modules ===
+
+does not rely on inheritance
+specific to module (state class name include the module name)
+Ex.:
+  .tab { background-color: purple; color: white; }
+  .is-tab-active { background-color: white; color: black; }
+
+== Changing State ==
+
+=== State changes are: ===
+  class name
+    happens with JS via event
+    element gets new class and style
+  pseudo-class
+    done with pseudo selector, no JS is used
+    limited to descendants and siblings
+  media query
+
+explain what is the default state
+
+=== Change via Class Name ===
+
+
+JavaScript changing state via class name
+
+// with jQuery
+$('.btn-close').click(() => {
+    $(this).parents('.dialog').addClass('is-hidden');
+})
+
+
+pressed button interface design pattern
+  display menu
+
+
+
+Ex.: {
+  $Style connected elements pattern$
+  `button` and `menu` example
+
+  Algo.:
+    button change to pressed and menu expands
+    wrap them in parent element
+    add class to elements on btn click with JS
+    select withing class `parent` with class `is-pressed` and `is-shown`
+  Probl.:
+    what if we change the location of the items?
+    what if we add more buttons?
+
+  <div id="content">
+    <div class="toolbar is-active">
+        <button id="btn-new" class="btn" data-action="menu">New</button>
+        <div id="menu-new" class="menu">
+            <ul> ... </ul>
+        </div>
+    </div>
+  </div>
+
+  $('#btn-new').click(() => {
+    // wrap the clicked button in jQuery
+    var el = $(this);
+
+    // change the state of the button
+    el.addClass('is-pressed');
+
+    // find the menu by stripping `btn-` and adding it to menu selector
+    $('#menu-' + el.id.substr(4)).removeClass('is-hidden');
+  });
+
+  .is-active .btn { color: #000; }
+  .is-active .menu { display: block; }
+}
+
+Ex.: {
+
+$Activating the menu with a sibling selector$
+  dependency of tying the menu HTML with the button HTML:
+    one has to come immediately after the other.
+
+  <div id="content">
+    <div class="toolbar">
+        <button id="btn-new" class="btn is-active" data-action="menu">New</button>
+        <div id="menu-new" class="menu">
+            <ul> ... </ul>
+        </div>
+    </div>
+  </div>
+
+  .btn.is-active { color: #000; }
+  .btn.is-active + .menu { display: block; }
+}
+
+Handling State Change with Attribute Selectors
+
+Ex.: {
+  $Handling State Change with Attribute Selectors$
+
+  `Sub-Module`
+    .btn { color: #333; }
+    .btn-pressed { color: #000; }
+    .btn-disabled { opacity: .5; pointer-events: none; }
+  `State`
+    .btn { color: #333; }
+    .is-pressed { color: #000; }
+    .is-disabled { opacity: .5; pointer-events: none; }
+
+  `Attrselectors` -> just change the value of a single attribute
+    .btn[data-state=default] { color: #333; }
+    .btn[data-state=pressed] { color: #000; }
+    .btn[data-state=disabled] { opacity: .5; pointer-events: none; }
+
+  <button class="btn" data-state="disabled">Disabled</button>
+  $(".btn").bind("click", () => {
+    $(this).attr('data-state', 'pressed');
+  });
+}
+
+
+Ex.: {
+$Class-based State Change with CSS Animations$
+  - JS handles the state changes
+  - CSS handling the transition
+
+  // CSS
+  .is-visible { opacity: 1; animation: fade 2s; }
+  .is-hidden { opacity: 0; animation: fade 2s reverse; }
+  .is-removed { display: none; }
+  @-webkit-keyframes fade {
+      0% { opacity:0;  }
+    100% { opacity:1; display:block; }
+  }
+
+  // JS
+  function showMessage (s) {
+    var el = document.getElementById('message');
+    el.innerHTML = s;
+
+    // set state
+    el.className = 'is-visible';
+    setTimeout(() => {
+        /* set state back */
+        el.className = 'is-hidden';
+        setTimeout(() => el.className = 'is-removed', 2000);
+    }, 3000);
+  }
+}
+
+{
+  $Change via Pseudo-class$
+
+  most useful pseudo-classes -> :hover, :focus, and :active
+  CSS3 -> :nth-child or :last-child
+  pseudo-classes secondary state of a module
+
+  Ex.:
+    .btn { background-color: #333; }
+    .btn:hover { background-color: #336; }
+    .btn:focus { box-shadow: 0 0 3px rgba(48,48,96,.3); }
+}
+
+
+Ex.: {
+  $Change via Media Query$
+
+media query is defined in two ways
+  1) <link href="print.css" rel="stylesheet" media="print">
+  2) @media screen and (max-width: 400px) {
+        #content { float: none; }
+     }
+
+- adaptive design and responsive web design
+- place media queries around the module states
+- there will be duplication but this will result in loose coupling
+
+  .nav > li { float: left; }
+  @media screen and (max-width: 400px) {
+    .nav > li { float: none; }
+  }
+
+  .content { float: left; width: 75%; }
+  .sidebar { float: right; width: 25%; }
+
+  @media screen and (max-width: 400px) {
+    .content, .sidebar {
+        float: none;
+        width: auto;
+    }
+  }
+}
+
+*Google*
+  media query
+  viewport sizes
+  DOM
+    top of the DOM
+  data-action
+  sibiling selector
+__________________________________________________________________
